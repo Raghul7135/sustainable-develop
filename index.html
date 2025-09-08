@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartWaste – Intelligent Waste Segregation for ULBs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h1, h2, h3, h4 {
+      color: #1a5f7a;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1a5f7a;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #009688;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #009688;
+      color: white;
+      border-radius: 5px;
+      transition: 0.3s;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #00796b;
+      transform: translateY(-2px);
+    }
+
+    /* Header */
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #009688;
+    }
+
+    .logo span {
+      color: #1a5f7a;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #009688;
+    }
+
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, #e0f7fa, #b2dfdb);
+      padding: 160px 0 100px;
+      text-align: center;
+    }
+
+    #hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #00695c;
+    }
+
+    #hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: #263238;
+    }
+
+    /* Problem Section */
+    #problem {
+      background: #fff;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 30px;
+      margin-top: 30px;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: #d32f2f;
+      margin-bottom: 15px;
+    }
+
+    /* Solution Section */
+    #solution {
+      background: #f1f8e9;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .feature i {
+      font-size: 2.5rem;
+      color: #009688;
+      margin-bottom: 15px;
+    }
+
+    /* How It Works */
+    #how-it-works {
+      background: #ffffff;
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .step {
+      flex: 0 0 18%;
+      text-align: center;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 35px;
+      left: 100%;
+      width: 100%;
+      height: 2px;
+      background: #ccc;
+      transform: translateY(-50%);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: #009688;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    /* Innovation */
+    #innovation {
+      background: #e8f5e8;
+    }
+
+    .innovation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .innovation-item {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .innovation-item h4 {
+      color: #1a5f7a;
+    }
+
+    /* Impact */
+    #impact {
+      background: #f3f3f3;
+      text-align: center;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #009688;
+    }
+
+    /* Dashboard Preview */
+    #dashboard {
+      background: #1a5f7a;
+      color: white;
+      text-align: center;
+    }
+
+    #dashboard h2 {
+      color: white;
+    }
+
+    #dashboard p {
+      color: #cce5ff;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .dashboard-img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Demo */
+    #demo {
+      background: #fff;
+      text-align: center;
+    }
+
+    .demo-video {
+      margin-top: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* CTA */
+    #cta {
+      background: linear-gradient(135deg, #009688, #00796b);
+      color: white;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    #cta h2 {
+      color: white;
+    }
+
+    #cta p {
+      color: #e0f7fa;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    #cta .btn {
+      background: white;
+      color: #009688;
+      margin-top: 20px;
+    }
+
+    #cta .btn:hover {
+      background: #f1f1f1;
+    }
+
+    /* Footer */
+    footer {
+      background: #263238;
+      color: #b0bec5;
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      color: #eceff1;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      color: #b0bec5;
+    }
+
+    .footer-col a:hover {
+      color: #ffffff;
+    }
+
+    .social-links a {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      color: #b0bec5;
+    }
+
+    .social-links a:hover {
+      color: #009688;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #37474f;
+      font-size: 0.9rem;
+    }
+
+    /* User Action Buttons */
+    .user-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .action-btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      background: #f5f5f5;
+      color: #1a5f7a;
+    }
+
+    .action-btn:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+    }
+
+    .action-btn.primary {
+      background: #009688;
+      color: white;
+    }
+
+    .action-btn.primary:hover {
+      background: #00796b;
+    }
+
+    .action-btn i {
+      font-size: 1.1rem;
+    }
+
+    /* User Data Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1001;
+    }
+
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #hero h1 {
+        font-size: 2.3rem;
+      }
+
+      #hero p {
+        font-size: 1.1rem;
+      }
+
+      .step {
+        flex: 0 0 100%;
+        margin-bottom: 30px;
+      }
+
+      .step::after {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1024px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .user-actions {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-actions {
+        flex-direction: column;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .action-btn {
+        width: auto;
+    }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Smart<span>Waste</span></div>
+        <ul class="nav-links">
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#innovation">Innovation</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+        <div class="user-actions">
+          <button class="action-btn" id="statusBtn"><i class="fas fa-chart-line"></i> Status</button>
+          <button class="action-btn" id="rewardBtn"><i class="fas fa-gift"></i> Rewards</button>
+          <button class="action-btn primary" id="throwWasteBtn"><i class="fas fa-trash"></i> Throw Waste</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container">
+      <h1>Smart Waste Segregation for Smarter Cities</h1>
+      <p>A low-cost, IoT-powered smart bin that automatically detects, segregates, and reports waste — empowering ULBs with real-time data and cleaner streets.</p>
+      <a href="#cta" class="btn">Partner With Us</a>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section id="problem">
+    <div class="container">
+      <h2>🗑️ The Problem: India’s Waste Crisis</h2>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <p><strong>India generates 62 million tons of waste annually</strong>, but only <strong>30% is segregated at source</strong>.</p>
+        <p>Manual segregation is <strong>unhealthy, inefficient, and costly</strong>. ULBs spend <strong>40–50% of their sanitation budget</strong> just on collection.</p>
+        <p>Mixed waste leads to overflowing landfills, poor recycling, and health risks for sanitation workers.</p>
+        <p><strong>Our solution?</strong> Make every bin intelligent — so waste is segregated <em>before</em> it’s collected.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section id="solution">
+    <div class="container">
+      <h2>💡 The Solution: SmartWaste Bin</h2>
+      <p>Our IoT-enabled smart bin automatically identifies and segregates waste into Wet, Dry, Plastic, and Metal — right at the point of disposal.</p>
+      <div class="feature-grid">
+        <div class="feature">
+          <i class="fas fa-microchip"></i>
+          <h3>Sensor Intelligence</h3>
+          <p>Capacitive, inductive & color sensors detect waste type instantly.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-sort"></i>
+          <h3>Auto Segregation</h3>
+          <p>Servo-controlled lids route waste to correct compartments.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-signal"></i>
+          <h3>Real-Time Alerts</h3>
+          <p>Fill-level & weight data sent to ULB dashboard via IoT.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-tachometer-alt"></i>
+          <h3>ULB Dashboard</h3>
+          <p>Track bins, optimize routes, and reduce overflow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2>🧩 How It Works</h2>
+      <p>Simple, smart, and fully automated.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Drop</h3>
+          <p>Citizen drops waste into the bin.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Sense</h3>
+          <p>Sensors detect moisture, metal, and color.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Decide</h3>
+          <p>Microcontroller classifies the waste.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Segregate</h3>
+          <p>Servo opens correct lid automatically.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>Report</h3>
+          <p>Data sent to cloud dashboard for ULB action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Innovation -->
+  <section id="innovation">
+    <div class="container">
+      <h2>🔑 Innovation Factors</h2>
+      <div class="innovation-grid">
+        <div class="innovation-item">
+          <h4>💰 Low-Cost</h4>
+          <p>Full prototype under ₹7,000 using affordable sensors.</p>
+        </div>
+        <div class="innovation-item">
+          <h4>🔧 Modular Retrofit</h4>
+          <p>Attach to existing bins — no replacement needed.</p>
+        </div>
+        <div class="innovation-item">
+          <h4>🌞 Solar Option</h4>
+          <p>For outdoor and roadside bins.</p>
+        </div>
+        <div class="innovation-item">
+          <h4>🎮 Gamification</h4>
+          <p>QR scan → earn GreenPoints™ for correct disposal.</p>
+        </div>
+        <div class="innovation-item">
+          <h4>🟢 LED Feedback</h4>
+          <p>Green = correct, Red = wrong disposal.</p>
+        </div>
+        <div class="innovation-item">
+          <h4>📱 Mobile App</h4>
+          <p>ULB staff get real-time alerts and maps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section id="impact">
+    <div class="container">
+      <h2>📊 Measurable Impact</h2>
+      <p>Proven benefits for ULBs, citizens, and the environment.</p>
+      <div class="stats">
+        <div class="stat">20–30%</div>
+        <div class="stat">80%</div>
+        <div class="stat">40%</div>
+        <div class="stat">50%</div>
+        <div class="stat">70%</div>
+      </div>
+      <p>reduction in waste collection costs, increase in recycling rates, and decrease in landfill use.</p>
+    </div>
+  </section>
+
+  <!-- Dashboard Preview -->
+  <section id="dashboard">
+    <div class="container">
+      <h2>📈 Dashboard Preview</h2>
+      <p>Intuitive data insights for effective waste management.</p>
+      <img src="dashboard-preview.png" alt="Dashboard Preview" class="dashboard-img"/>
+      <!-- Image source file might be missing since it's using a placeholder path -->
+    </div>
+  </section>
+
+  <!-- Demo -->
+  <section id="demo">
+    <div class="container">
+      <h2>🎥 Watch the Demo</h2>
+      <div class="demo-video">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/demo-video-id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="container">
+      <h2>🌟 Join the SmartWaste Revolution</h2>
+      <p>Be a part of the solution. Let's make waste segregation at source the norm, not the exception.</p>
+      <a href="mailto:contact@smartwaste.com" class="btn">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <p>SmartWaste is on a mission to empower urban local bodies with intelligent waste management solutions.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#problem">Problem</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#innovation">Innovation</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#cta">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <ul>
+            <li>Email: contact@smartwaste.com</li>
+            <li>Phone: +91 123 456 7890</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2023 SmartWaste. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+// User data tracking
+const userData = {
+    totalWaste: 0,
+    rewards: 0,
+    wasteTypes: {
+        wet: 0,
+        dry: 0,
+        plastic: 0,
+        metal: 0
+    }
+};
+
+// Button click handlers
+document.getElementById('statusBtn').addEventListener('click', () => {
+    showModal(`
+        <h3>Waste Status</h3>
+        <p>Total Waste Disposed: ${userData.totalWaste}kg</p>
+        <p>Wet Waste: ${userData.wasteTypes.wet}kg</p>
+        <p>Dry Waste: ${userData.wasteTypes.dry}kg</p>
+        <p>Plastic: ${userData.wasteTypes.plastic}kg</p>
+        <p>Metal: ${userData.wasteTypes.metal}kg</p>
+    `);
+});
+
+document.getElementById('rewardBtn').addEventListener('click', () => {
+    showModal(`
+        <h3>Your Rewards</h3>
+        <p>Total Points: ${userData.rewards}</p>
+        <p>Level: ${Math.floor(userData.rewards/100)}</p>
+        <p>Next reward in: ${100 - (userData.rewards % 100)} points</p>
+    `);
+});
+
+document.getElementById('throwWasteBtn').addEventListener('click', () => {
+    showModal(`
+        <h3>Dispose Waste</h3>
+        <select id="wasteType">
+            <option value="wet">Wet Waste</option>
+            <option value="dry">Dry Waste</option>
+            <option value="plastic">Plastic</option>
+            <option value="metal">Metal</option>
+        </select>
+        <input type="number" id="wasteWeight" placeholder="Weight in kg" min="0.1" step="0.1">
+        <button onclick="disposeWaste()">Dispose</button>
+    `);
+});
+
+function disposeWaste() {
+    const type = document.getElementById('wasteType').value;
+    const weight = parseFloat(document.getElementById('wasteWeight').value);
+    
+    if (weight > 0) {
+        userData.totalWaste += weight;
+        userData.wasteTypes[type] += weight;
+        userData.rewards += Math.floor(weight * 10); // 10 points per kg
+        closeModal();
+        alert('Waste disposed successfully!');
+    }
+}
+
+function showModal(content) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            ${content}
+        </div>
+    `;
+    document.body.appendChild(modal);
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+  </script>
+</body>
+</html>
